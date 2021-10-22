@@ -142,7 +142,8 @@ Revision/Addition Description and Link:
 
 # Joseph F
 Initial Description and Link:
-
+* This markdown file takes Kaggle Air BnB .csv data for NYC using Readr and tidies it usind Dplyr from the Tidyverse package to isolate all Air BnB locations in Brooklyn.  The package Leaflet is used to map the locations.   
+* https://raw.githubusercontent.com/professorfoy/DATA-607/main/TidyVerse%20CREATE%20Assigment%2010-24-21.Rmd
 Revision/Addition Description and Link:
 
 
