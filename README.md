@@ -34,6 +34,10 @@ Link to Github:
 
 https://github.com/man-of-moose/FALL2021TIDYVERSE
 
+Link to Github Commits:
+
+https://github.com/man-of-moose/FALL2021TIDYVERSE/commit/e13a362c52f0204351b04d2de91ce595784615ad
+
 
 Revision/Addition Description and Link:
 
