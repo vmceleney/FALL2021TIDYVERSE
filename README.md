@@ -244,7 +244,9 @@ Revision/Addition Description and Link:
 
 # Thomas B
 Initial Description and Link:
-
+NYC Traffic Accident Dataset
+https://github.com/TheReallyBigApple/CunyAssignments/blob/main/DATA607/Data607CreateTidyverseVignette.Rmd
+https://rpubs.com/BigApple/826382
 Revision/Addition Description and Link:
 
 
