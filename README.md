@@ -222,8 +222,8 @@ Revision/Addition Description and Link:
 # Nnaemeka O
 Initial Description and Link:
 Vignette That Demonstrates the functions in TidyVerse
-Github: https://github.com/nnaemeka-git/FALL2021TIDYVERSE/blob/main/TidyVignette.Rmd
-rpubs: https://rpubs.com/nnaemeka/vignette
++ Github: https://github.com/nnaemeka-git/FALL2021TIDYVERSE/blob/main/TidyVignette.Rmd
++ rpubs: https://rpubs.com/nnaemeka/vignette
 
 
 Revision/Addition Description and Link:
