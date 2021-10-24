@@ -30,6 +30,10 @@ Link to RPubs:
 
 https://rpubs.com/alecm/CUNY_607_tidyverse_purr
 
+Link to Github:
+
+https://github.com/man-of-moose/FALL2021TIDYVERSE
+
 
 Revision/Addition Description and Link:
 
