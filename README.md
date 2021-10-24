@@ -60,8 +60,8 @@ Revision/Addition Description and Link:
 
 # Chinedu O
 Initial Description and Link: Using dplyr's glimpse, select, filter, and rename functions. Also, create a scatterplot and barchart with ggplot2.
-[Github](https://github.com/chinedu2301/FALL2021TIDYVERSE/blob/main/Chinedu_CUNY_SPS_DATA607_create_vignette.Rmd)
-[Rpubs](https://rpubs.com/chinedu2301/826036)
+[Github](https://github.com/chinedu2301/FALL2021TIDYVERSE/blob/main/Chinedu_CUNY_SPS_DATA607_create_vignette.Rmd) <br/>
+[Rpubs](https://rpubs.com/chinedu2301/826036) <br/>
 
 
 Revision/Addition Description and Link:
