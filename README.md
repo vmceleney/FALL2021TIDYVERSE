@@ -88,7 +88,8 @@ Revision/Addition Description and Link:
 
 # Eric L
 Initial Description and Link:
-
+* Demonstrate a handful of stringr functions and show how they are practical in data preprocessing
+* https://github.com/acatlin/FALL2021TIDYVERSE/blob/main/ELehmphul_TidyverseCREATE_stringr.rmd
 Revision/Addition Description and Link:
 
 
