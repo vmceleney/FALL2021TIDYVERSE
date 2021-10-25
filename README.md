@@ -88,7 +88,7 @@ Revision/Addition Description and Link:
 
 # David S
 Initial Description and Link:
-
+https://github.com/dsimband/FALL2021TIDYVERSE/blob/main/Tidyverse_vignette.Rmd
 
 Revision/Addition Description and Link:
 
@@ -200,7 +200,7 @@ Revision/Addition Description and Link:
 
 # Mauricio C
 Initial Description and Link:
-
+https://github.com/MauricioClaudio/FALL2021TIDYVERSE/blob/patch-1/TidyVerse%20scatter-plot%20options
 
 Revision/Addition Description and Link:
 
@@ -214,7 +214,7 @@ Revision/Addition Description and Link:
 
 # Nicholas O
 Initial Description and Link:
-
+https://github.com/nolivercuny/FALL2021TIDYVERSE/blob/main/nick_oliver_purrr.rmd
 
 Revision/Addition Description and Link:
 
@@ -291,10 +291,10 @@ Revision/Addition Description and Link:
 
 # Trang D
 Initial Description and Link:
-
+ggplots - Histogram, Jitter & boxplot
 
 Revision/Addition Description and Link:
-
+https://github.com/Trangmis/FALL2021TIDYVERSE/blob/main/TidyVerse-CREATE.Rmd
 
 # Tyler B
 Initial Description and Link:
@@ -323,7 +323,5 @@ Initial Description and Link:
 
 Revision/Addition Description and Link:
 
-# Trang Do
-Initial Description and Link:
 
 
