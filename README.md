@@ -65,9 +65,12 @@ Revision/Addition Description and Link:
 # Clifton L
 Initial Description and Link: Just a test.
 
+ * Show how to use dplyr, readr and ggplot packages.^M
+ * https://github.com/cliftonleesps/607_acq_mgt/blob/main/tidyverse/cliffleevignette/vignettes/clifflee-vignette.Rmd^M
 Revision/Addition Description and Link:
 
 
+ * https://github.com/cliftonleesps/607_acq_mgt/commit/fd090fc69a259347d1a55452970b0dd69ee6541b^M
 # Coffy A
 Initial Description and Link:
 
