@@ -1,0 +1,124 @@
+---
+title: "DATA 607 - Tidyverse - Reading and writing your data"
+author: "Preston Peck"
+date: "10/24/2021"
+output: html_document
+---
+
+```{r message = FALSE}
+library(tidyverse)
+library(readr)
+```
+
+Source: https://github.com/fivethirtyeight/data/tree/master/state-of-the-state
+
+# Read tabular data with readr
+##### All pre-configured parsing methods can be re-written using read_delimeter without anything being lost
+```{r}
+readDirectory <- "data/read/"
+```
+
+### Values separated by anything
+##### trim_ws defaults to FALSE unlike other functions, which means blanks won't convert to NA
+```{r message = FALSE}
+anythingFile <- "words.txt"
+anythingPath <- paste(readDirectory, anythingFile, sep = "")
+
+anything <- read_delim(anythingPath, delim = "|", trim_ws = TRUE)
+```
+
+### Comma separated values
+```{r message = FALSE}
+commaFile <- "words_comma.csv"
+commaPath <- paste(readDirectory, commaFile, sep = "")
+
+csvComma <- read_csv(commaPath)
+csvComma
+
+all.equal(csvComma, read_delim(commaPath, delim = ",", trim_ws = TRUE))
+```
+
+### Semi-colon separated values
+##### In various European locales, as the comma character serves as the decimal point, the function read.csv2 should be used instead. Decimal points as a result are parsed out, and semi-colons are used in place of commas as delimiters. We can use read_delim with locale to achieve similar results
+```{r message = FALSE}
+semiColonFile <- "words_semi-colon.csv"
+semiColonPath <- paste(readDirectory, semiColonFile, sep = "")
+
+csvSemiColon <- read_csv2(semiColonPath)
+csvSemiColon
+
+all.equal(csvComma, read_delim(semiColonPath, delim = ";", trim_ws = TRUE, locale = locale(decimal_mark = ",")))
+```
+
+### Tab separated values
+```{r message = FALSE}
+tabFile <- "words.tsv"
+tabPath <- paste(readDirectory, tabFile, sep = "")
+
+tsv <- read_tsv(tabPath)
+tsv
+
+all.equal(tsv, read_delim(tabPath, delim = "\t", trim_ws = TRUE))
+```
+
+### Compare methods
+##### The data content is identical between methods, but the data frames differ ever so slightly in a hidden delim attribute that will prevent recognizing equality. By ignoring attribute checks, we will just compare content
+```{r message = FALSE}
+all.equal(anything, csvComma)
+attributes(anything)
+
+attributes(anything)$spec$delim
+attributes(csvComma)$spec$delim
+attributes(csvSemiColon)$spec$delim
+attributes(tsv)$spec$delim
+
+all.equal(anything, csvComma, check.attributes = FALSE)
+all.equal(csvComma, csvSemiColon, check.attributes = FALSE)
+all.equal(csvSemiColon, tsv, check.attributes = FALSE)
+```
+
+
+
+
+
+# Save data with readr
+##### By re-reading the writes and comparing, we can ensure nothing is lost
+```{r}
+writeDirectory <- "data/write/"
+```
+
+### Values separated by anything
+```{r message = FALSE}
+anythingPath <- paste(writeDirectory, anythingFile, sep = "")
+
+write_delim(anything, anythingPath, delim = "|")
+
+all.equal(anything, read_delim(anythingPath, delim = "|", trim_ws = TRUE))
+```
+
+### Comma separated values
+```{r message = FALSE}
+commaPath <- paste(writeDirectory, commaFile, sep = "")
+
+write_csv(csvComma, commaPath)
+
+all.equal(csvComma, read_csv(commaPath))
+```
+
+### Semi-colon separated values
+```{r message = FALSE}
+semiColonPath <- paste(writeDirectory, semiColonFile, sep = "")
+
+write_csv2(csvSemiColon, semiColonPath)
+
+all.equal(csvSemiColon, read_csv2(semiColonPath))
+```
+
+### Tab separated values
+```{r message = FALSE}
+tabPath <- paste(writeDirectory, tabFile, sep = "")
+
+write_tsv(tsv, tabPath)
+
+all.equal(tsv, read_tsv(tabPath))
+```
