@@ -219,7 +219,7 @@ Revision/Addition Description and Link:
 
 
 # Santiago T
-Initial Description and Link:
+Initial Description and Link: PURRR Map and Reduce Examples https://github.com/sserrot/FALL2021TIDYVERSE
 
 Revision/Addition Description and Link:
 

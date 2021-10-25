@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "PURRR Map & Reduce"
 author: "Santiago Torres"
 date: "10/25/2021"
 output: html_document
@@ -13,8 +13,6 @@ library(purrr)
 ```
 
 # Purr functions for looping through data
-
-## Comparing followers of world religions
 
 Source: [FiveThirtyEight](https://github.com/fivethirtyeight/data/tree/master/nfl-elo)
 
