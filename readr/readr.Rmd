@@ -18,18 +18,6 @@ Source: https://github.com/fivethirtyeight/data/tree/master/state-of-the-state
 ##### Most pre-configured parsing methods can be re-written using read_delimeter without anything being lost
 ```{r}
 readDirectory <- "data/read/"
-
-colNames <- c(
-  "phrase",
-  "category",
-  "d_speeches",
-  "r_speeches",
-  "total",
-  "percent_of_d_speeches",
-  "percent_of_r_speeches",
-  "chi2",
-  "pval"
-)
 ```
 
 ## Methods Values separated by anything
@@ -91,6 +79,18 @@ all.equal(tsv, table)
 ##### fwf_widths() reads continuously according to lengths provided\n
 ##### fwf_positions() read between indexes, so it can be discontinuous
 ```{r message = FALSE}
+colNames <- c(
+  "phrase",
+  "category",
+  "d_speeches",
+  "r_speeches",
+  "total",
+  "percent_of_d_speeches",
+  "percent_of_r_speeches",
+  "chi2",
+  "pval"
+)
+
 fixedWidthFile <- "words_fwf.txt"
 fixedWidthPath <- paste(readDirectory, fixedWidthFile, sep = "")
 
@@ -188,6 +188,7 @@ excelPath <- paste(readDirectory, excelFile, sep = "")
 xlsx <- read_excel(excelPath)
 xlsx
 
+all.equal(xlsx, anything)
 all.equal(xlsx, anything, check.attributes = FALSE)
 ```
 
@@ -205,6 +206,19 @@ gooleSheetUrl <- "https://docs.google.com/spreadsheets/d/1xwNqqsZeWfNo5PzDFogusR
 
 googleSheet <- read_sheet(gooleSheetUrl)
 googleSheet
+
+# We can set all column types with a single letter:
+# _ or -: skip the column
+# ?: guess
+# l: logical
+# i: integer
+# d: double
+# D: date
+# t: time of day
+# T: POSIXct datetime
+# c: character
+# L: list-column
+# C: list of raw cell data
 
 colTypes <- "ccddddddd"
 
