@@ -134,7 +134,8 @@ Adding a few functions from readr, purr, and ggplot.
 URL: https://github.com/acatlin/FALL2021TIDYVERSE/blob/main/pajuelo_tidyverse_create.rmd
 
 Revision/Addition Description and Link:
-
+Extending Trang Do's work.
+URL: https://github.com/acatlin/FALL2021TIDYVERSE/blob/main/pajuelo_tidyverse_extend.rmd
 
 # Jaya V
 Initial Description and Link:
