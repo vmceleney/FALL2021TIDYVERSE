@@ -63,6 +63,8 @@ Initial Description and Link:
 
 
 Revision/Addition Description and Link:
+* Peter Phung: Colored datapoints, facet wrapping, overlapping histograms, line plots, and pivoting wider
+* https://github.com/peterphung2043/DATA-607---Tidyverse-EXTEND-Assignment/blob/main/Phung_Onyeka_Extend.Rmd
 
 
 # ChunJie N
