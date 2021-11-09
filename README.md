@@ -47,7 +47,8 @@ Revision/Addition Description and Link:
 
 # Charles U
 Initial Description and Link:
-
+https://github.com/omocharly/FALL2021TIDYVERSE/blob/main/DATA607_Tidyverse_Create_Assigmt.Rmd
+https://rpubs.com/omocharly/826053
 
 Revision/Addition Description and Link:
 
