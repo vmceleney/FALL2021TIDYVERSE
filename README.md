@@ -1,3 +1,4 @@
+=======
 # Sample
 Initial Description and Link: 
 * Demonstrate how to flip ggplot axes
@@ -39,7 +40,8 @@ Revision/Addition Description and Link:
 
 # Catherine C
 Initial Description and Link:
-
+Demonstrate how to use the Purrr map functions to manipulate nested dataframes and vectors. 
+*https://github.com/catcho1632/FALL2021TIDYVERSE/blob/patch-1/purrr.rmd
 
 Revision/Addition Description and Link:
 
@@ -165,6 +167,11 @@ Revision/Addition Description and Link:
 
 # Joseph F
 Initial Description and Link:
+
+* This markdown file takes Kaggle Air BnB .csv data for NYC using Readr and tidies it usind Dplyr from the Tidyverse package to isolate all Air BnB locations in Brooklyn.  The package Leaflet is used to map the locations.   
+* https://raw.githubusercontent.com/professorfoy/DATA-607/main/TidyVerse%20CREATE%20Assigment%2010-24-21.Rmd
+
+=======
 
 
 Revision/Addition Description and Link:
@@ -323,5 +330,4 @@ Initial Description and Link:
 
 
 Revision/Addition Description and Link:
-
 
