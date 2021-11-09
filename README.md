@@ -1,3 +1,4 @@
+=======
 # Sample
 Initial Description and Link: 
 * Demonstrate how to flip ggplot axes
@@ -19,6 +20,25 @@ Revision/Addition Description and Link:
 # Alec M
 Initial Description and Link:
 
+=======
+Introduction to the fantastic Purrr package. This tidyverse package provides users a great framework for working with lists, nested lists, and json lists. Purrr makes it easy to do things like:
+
+- mapping functions across a list
+- extracting data from nested lists
+- creating dataframes from nested lists
+- and much more
+
+Link to RPubs:
+
+https://rpubs.com/alecm/CUNY_607_tidyverse_purr
+
+Link to Github:
+
+https://github.com/man-of-moose/FALL2021TIDYVERSE
+
+Link to Github Commits:
+
+https://github.com/man-of-moose/FALL2021TIDYVERSE/commit/e13a362c52f0204351b04d2de91ce595784615ad
 
 Revision/Addition Description and Link:
 
@@ -40,12 +60,21 @@ Revision/Addition Description and Link:
 # Catherine C
 Initial Description and Link:
 
+Demonstrate how to use the Purrr map functions to manipulate nested dataframes and vectors. 
+*https://github.com/catcho1632/FALL2021TIDYVERSE/blob/patch-1/purrr.rmd
+
+
 
 Revision/Addition Description and Link:
 
 
 # Charles U
 Initial Description and Link:
+
+
+https://github.com/omocharly/FALL2021TIDYVERSE/blob/main/DATA607_Tidyverse_Create_Assigmt.Rmd
+https://rpubs.com/omocharly/826053
+
 
 
 Revision/Addition Description and Link:
@@ -59,12 +88,19 @@ Revision/Addition Description and Link:
 
 
 # Chinedu O
+
 Initial Description and Link:
 
 
 Revision/Addition Description and Link:
-* Peter Phung: Colored datapoints, facet wrapping, overlapping histograms, line plots, and pivoting wider
-* https://github.com/peterphung2043/DATA-607---Tidyverse-EXTEND-Assignment/blob/main/Phung_Onyeka_Extend.Rmd
+
+
+=======
+Initial Description and Link: Using dplyr's glimpse, select, filter, and rename functions. Also, create a scatterplot and barchart with ggplot2.
+[Github](https://github.com/chinedu2301/FALL2021TIDYVERSE/blob/main/Chinedu_CUNY_SPS_DATA607_create_vignette.Rmd) 
+[Rpubs](https://rpubs.com/chinedu2301/826036) 
+
+Revision/Addition Description and Link:
 
 
 # ChunJie N
@@ -146,6 +182,8 @@ Revision/Addition Description and Link:
 
 # Jeffrey P
 Initial Description and Link:
+* Demonstrate how work with date and time data with Lubridate.
+* https://github.com/acatlin/FALL2021TIDYVERSE/blob/main/lubridate.rmd
 
 
 Revision/Addition Description and Link:
@@ -167,6 +205,8 @@ Revision/Addition Description and Link:
 
 # Joseph F
 Initial Description and Link:
+* This markdown file takes Kaggle Air BnB .csv data for NYC using Readr and tidies it usind Dplyr from the Tidyverse package to isolate all Air BnB locations in Brooklyn.  The package Leaflet is used to map the locations.   
+* https://raw.githubusercontent.com/professorfoy/DATA-607/main/TidyVerse%20CREATE%20Assigment%2010-24-21.Rmd
 
 
 Revision/Addition Description and Link:
@@ -217,12 +257,18 @@ Revision/Addition Description and Link:
 # Nicholas O
 Initial Description and Link:
 
+* Demonstrate how to use purrr to manipulate a data frame
+* https://github.com/acatlin/FALL2021TIDYVERSE/blob/main/nick_oliver_purrr.rmd
+
 
 Revision/Addition Description and Link:
 
 
 # Nnaemeka O
 Initial Description and Link:
+Vignette That Demonstrates the functions in TidyVerse
++ Github: https://github.com/nnaemeka-git/FALL2021TIDYVERSE/blob/main/TidyVignette.Rmd
++ rpubs: https://rpubs.com/nnaemeka/vignette
 
 
 Revision/Addition Description and Link:
@@ -239,6 +285,7 @@ Revision/Addition Description and Link:
 Initial Description and Link:
 * Pivoting wider, pivoting longer, nesting, and multiple boxplots using tidyverse packages
 * https://github.com/peterphung2043/DATA-607---Tidyverse-Create-Assignment/blob/main/tidyverse.Rmd
+
 
 Revision/Addition Description and Link:
 
@@ -287,6 +334,9 @@ Revision/Addition Description and Link:
 
 # Thomas B
 Initial Description and Link:
+NYC Traffic Accident Dataset
+https://github.com/TheReallyBigApple/CunyAssignments/blob/main/DATA607/Data607CreateTidyverseVignette.Rmd
+https://rpubs.com/BigApple/826382
 
 
 Revision/Addition Description and Link:
@@ -324,6 +374,8 @@ Revision/Addition Description and Link:
 Initial Description and Link:
 
 
-Revision/Addition Description and Link:
+Using dplyr case_when and stringr str_replace for variable derivation
+https://github.com/catfoodlover/Data607/blob/main/dplyr_case_when.rmd
 
+Revision/Addition Description and Link:
 
