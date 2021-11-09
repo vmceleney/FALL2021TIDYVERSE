@@ -1,4 +1,3 @@
-=======
 # Sample
 Initial Description and Link: 
 * Demonstrate how to flip ggplot axes
@@ -61,7 +60,9 @@ Revision/Addition Description and Link:
 
 
 # Chinedu O
-Initial Description and Link:
+Initial Description and Link: Using dplyr's glimpse, select, filter, and rename functions. Also, create a scatterplot and barchart with ggplot2.
+[Github](https://github.com/chinedu2301/FALL2021TIDYVERSE/blob/main/Chinedu_CUNY_SPS_DATA607_create_vignette.Rmd) 
+[Rpubs](https://rpubs.com/chinedu2301/826036) 
 
 
 Revision/Addition Description and Link:
