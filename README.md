@@ -118,7 +118,9 @@ Revision/Addition Description and Link:
 
 
 # Coffy A
-Initial Description and Link:
+Initial Description and Link: 
+_Demonstrate how to manipulate data with dplyr and create graphic representation with ggplot2 packages._
+Github: https://github.com/candrewxs/Vignettes/blob/master/dadata/KaggleTidyverse.Rmd
 
 
 Revision/Addition Description and Link:
