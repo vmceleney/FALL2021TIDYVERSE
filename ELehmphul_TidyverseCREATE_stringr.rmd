@@ -1,0 +1,160 @@
+---
+title: 'DATA 607 Tidyverse CREATE: stringr'
+author: "Eric Lehmphul"
+date: "10/24/2021"
+output: html_document
+---
+
+
+# Using stringr to handle Character and String Data
+
+### Overview
+
+This is a brief overview of the stringr package from Hadley Wickham's Tidyverse. Strings and characters are frequent data types that a data scientist encounters. The stringr package simplifies data manipulation involving string and character data types. Below are a handful of useful functions in the stringr package with an example dataset.
+
+The example dataset was acquired from Kaggle.com at the following link:
+https://www.kaggle.com/rtatman/every-pub-in-england?select=open_pubs.csv. This dataset contains the information of all pubs in England.
+
+#### Load Data
+
+```{r}
+# load packages and read data file
+
+library(tidyverse)
+# library(stringr)
+# library(readr)
+# library(dplyr)
+
+pub.data <- read_csv("https://raw.githubusercontent.com/SaneSky109/DATA607/main/Tidyverse/Data/open_pubs.csv")
+```
+
+#### Glimpse of Dataset
+
+```{r}
+glimpse(pub.data)
+```
+
+### Combine Strings
+
+Sometimes the data that you are working with is not in the most ideal form. For example, one may want to combine first and last name to a single column. The str_c function can combine strings together.
+
+Usage: str_c(..., sep = "", collapse = NULL)
+
+Purpose: Concatenate strings.
+
+Input: String or vector of strings that are separated by a commas.
+
+Output: Vector containing the combined strings.
+
+Example: Using pub dataset, combine the name with the address column.
+
+
+```{r}
+pub.data$Location <- str_c(pub.data$name, pub.data$address, sep = " located at ")
+
+head(pub.data$Location)
+```
+
+### Filter Data using str_detect
+
+Filtering data is a valueable asset to data scientists. str_detect returns boolean values on the inputted list. This can be used with other tidyverse functions to filter data.
+
+Usage: str_detect(string, pattern, negate = FALSE)
+
+Purpose: find if pattern is within string.
+
+Input: Vector that is or can be coerced to a character data type
+
+Output: Boolean vector where TRUE is that the string contains the pattern and FALSE is that the string does not contain the pattern 
+
+Example: Using pub dataset, determine rows that have "Essex" in the address column and store the TRUE rows in a new data frame.
+
+```{r}
+example <- str_detect(pub.data$address,"Essex")
+head(example)
+
+essex.data <- pub.data %>%
+  filter(str_detect(address,"Essex"))
+head(essex.data)
+```
+
+
+### Separate Strings to make new columns
+
+Occasionally the data that you work with will not be very tidy. For example, multiple columns are stored in a single column. The stringr package provides a good solution to this problem via the str_split function. This function separates a string into pieces that can be used to make new columns.
+
+Usage: str_split(string, pattern, n = Inf, simplify = FALSE)
+
+Purpose: Separate strings that meet the desired criteria.
+
+Input: Vector that is or can be coerced to a character data type
+
+Output: List of vectors that contain the separated strings
+
+Example: Using pub dataset, separate the address column into individual components. These components can be used to construct new columns for street, village, town, and county.
+
+```{r}
+# For example, dropped all rows that did not have 4 components in the address
+pub.data1 <- pub.data %>%
+  filter(!str_detect(address,".*,.*,.*,.*,"))
+
+pub.data1 <- pub.data1 %>%
+  filter(str_detect(address,".*,.*,.*,.+"))
+
+
+split.address <- str_split(pub.data1$address, pattern = ",")
+head(split.address)
+
+split.address <- split.address[sapply(split.address, length)==4]
+
+split.address <- unlist(split.address)
+
+
+pub.data1$street <- 0
+pub.data1$street <- split.address[seq(1, length(split.address), 4)]
+pub.data1$village <- 0
+pub.data1$village <- split.address[seq(2, length(split.address), 4)]
+pub.data1$town <- 0
+pub.data1$town <- split.address[seq(3, length(split.address), 4)]
+pub.data1$county <- 0
+pub.data1$county <- split.address[seq(4, length(split.address), 4)]
+
+head(pub.data1[,c("street","village","town","county")])
+```
+
+
+### Ordering Strings Alphabetically
+
+Ordering strings could be useful in data tables and data visualizations. The function str_sort, provided by the stringr package, does this task for us. 
+
+Usage: str_sort(
+  x,
+  decreasing = FALSE,
+  na_last = TRUE,
+  locale = "en",
+  numeric = FALSE,
+  ...
+)
+
+Purpose: sort strings.
+
+Input: Vector that is or can be coerced to a character data type
+
+Output: Vector in desired order
+
+Example: Using pub dataset, sort the name column in descending and ascending order alphabetically. It should be noted special characters like apostrophe (') and period (.) will be place before the letter a.
+
+```{r}
+decrease.FALSE <- str_sort(pub.data$name, decreasing = FALSE)
+head(decrease.FALSE)
+
+decrease.TRUE <- str_sort(pub.data$name, decreasing = TRUE)
+head(decrease.TRUE)
+```
+
+
+
+
+### Conclusion
+
+These are just a handful of useful functions in the stringr package. Feel free to check out the cheatsheet of stringr functions at: https://github.com/rstudio/cheatsheets/blob/master/strings.pdf.
