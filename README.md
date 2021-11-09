@@ -1,3 +1,4 @@
+=======
 # Sample
 Initial Description and Link: 
 * Demonstrate how to flip ggplot axes
@@ -204,15 +205,8 @@ Revision/Addition Description and Link:
 
 # Joseph F
 Initial Description and Link:
-
-
-
 * This markdown file takes Kaggle Air BnB .csv data for NYC using Readr and tidies it usind Dplyr from the Tidyverse package to isolate all Air BnB locations in Brooklyn.  The package Leaflet is used to map the locations.   
 * https://raw.githubusercontent.com/professorfoy/DATA-607/main/TidyVerse%20CREATE%20Assigment%2010-24-21.Rmd
-
-
-
-
 
 
 Revision/Addition Description and Link:
@@ -289,6 +283,8 @@ Revision/Addition Description and Link:
 
 # Peter P
 Initial Description and Link:
+* Pivoting wider, pivoting longer, nesting, and multiple boxplots using tidyverse packages
+* https://github.com/peterphung2043/DATA-607---Tidyverse-Create-Assignment/blob/main/tidyverse.Rmd
 
 
 Revision/Addition Description and Link:
@@ -382,5 +378,4 @@ Using dplyr case_when and stringr str_replace for variable derivation
 https://github.com/catfoodlover/Data607/blob/main/dplyr_case_when.rmd
 
 Revision/Addition Description and Link:
-
 
