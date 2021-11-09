@@ -1,0 +1,59 @@
+---
+title: "TIdyverse Create"
+author: "Jiho Kim"
+date: "10/24/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+```
+
+## Retrieve Data using readr::read.csv
+
+I chose heart failure dataset from Kaggle and read the csv file using read.csv function.
+
+```{r}
+heartdata <- read.csv('https://raw.githubusercontent.com/jihokim97/FALL2021TIDYVERSE/Tidyverse/heart.csv')
+view(heartdata)
+heartdata
+```
+
+## Dplyr
+
+I used dplyr packages to demonstrate different capabilities. 
+
+## Filter
+
+We can use filter functions to filter the desired rows from the dataframe.
+```{r}
+filteredheart <- heartdata%>%
+  filter(Cholesterol > 200)
+filteredheart
+```
+
+## Select
+
+We can select certain desired columns using select function.
+
+```{r}
+selectheart <- heartdata%>%
+  select(c('Age','MaxHR','HeartDisease'))
+selectheart
+```
+
+## group_by and Summarise
+
+We can group dataframe by columns and create new data frame into a single row using summarise.
+
+```{r}
+bysex <- heartdata%>%
+  group_by(Sex)%>%
+  summarise(count = n())
+
+bysex
+```

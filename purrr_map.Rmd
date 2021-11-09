@@ -1,0 +1,48 @@
+---
+title: "PURRR Map & Reduce"
+author: "Santiago Torres"
+date: "10/25/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(purrr)
+```
+
+# Purr functions for looping through data
+
+Source: [FiveThirtyEight](https://github.com/fivethirtyeight/data/tree/master/nfl-elo)
+
+I was looking for a dataset where I could use the functions within `purrr`
+
+```{r, warning=FALSE}
+nfl_elo = read_csv("https://raw.githubusercontent.com/sserrot/DATA607/main/Tidyverse%20Project/nfl-elo/nfl_elo_latest.csv") 
+
+glimpse(nfl_elo)
+```
+
+## 1A: basic reduce function
+
+Q: What is the sum of all the scores in the data set??
+A: Use `reduce` to combine a vector
+
+```{r}
+non_na_scores_1 <- nfl_elo$score1[!is.na(nfl_elo$score1)]
+non_na_scores_2 <- nfl_elo$score2[!is.na(nfl_elo$score2)]
+non_na_scores_1
+
+non_na_scores_1 %>% reduce(`+`)
+non_na_scores_2  %>% reduce(`+`)
+```
+ 
+## 1B: basic map function
+
+Q: How many total points were scored in a game??  
+A: Use `map2` to apply a function across a two vectors
+
+```{r}
+map2(non_na_scores_1, non_na_scores_2, sum)
+```

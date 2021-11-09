@@ -1,0 +1,291 @@
+---
+title: "Kagle Data - Tidyverse"
+author: "Coffy Andrews-Guo   Tom Buonora"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    includes:
+      in_header: header.html
+    toc: true
+    toc_float: true
+    
+    
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  fig.width = 7,
+  fig.height = 3,
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+# TidyverseCreate
+Source: [Kagle data - Data Analysis Jobs, Based on NYC Jobs - October 2021](https://www.kaggle.com/intelai/data-analysis-jobs?select=data_analysis_jobs.csv)
+
+This dataset contains current job postings available on the City of New York’s official jobs site ( http://www.nyc.gov/html/careers/html/search/search.shtml ). Internal postings available to city employees and external postings available to the general public are included.
+
+
+## Load Packages
+```{r}
+library("tidyverse")
+library("reactable")
+library("tidytext")
+```
+
+
+
+## Data Set
+
+The `readr package` in tidyverse library contains the function `read_csv` that will import data from a csv file. The csv file was downloaded from Kaggle.com dataset on Data Analysis Jobs in NYC for October 2021. The imported data was read in to RStudio as a dataframe, `da`.  
+```{r}
+da <- read_csv("https://github.com/candrewxs/Vignettes/blob/master/dadata/data_analysis_jobs.csv?raw=true")
+```
+
+
+
+Retrieve the names attribute of the da data set with the `names()` function.
+```{r}
+names(da)
+```
+
+## Group by Variables
+
+### Dataset Question: How many job postings are Internal and External? What are the Levels and how many are available?
+
+Create a new data frame using existing data frame (da) by extracting columns: Level and Posting Type. The `count()` combines `group_by` and `count rows in each group` into a single function. Renamed the column name "n" to "Count" and created an interactive data table. 
+```{r}
+plot1 <- da %>%
+   count(Level, `Posting Type`)  # dplyr package: group and count 
+
+colnames(plot1)[3] <- "Count" 
+# use function colnames() to rename column 
+# and access individual column names with colnames(df)[index]
+
+reactable(plot1) # interactive data table
+```
+
+### Visualization 
+```{r}
+# discrete visualization with ggplot2
+p1 <- ggplot(data = plot1) 
+  p1 + geom_col(aes(Level, Count, fill = `Posting Type`))
+```
+
+
+### Dataset Question: What are the Business Titles categories which NYC hires Data Analysis to perform? Which Business Title has the highest demand for Data Analysis?
+
+Create a new data frame using existing data frame (da) by extracting column: Business Title. Tidy data frame column to upper case and build a contingency table of the counts at each combination of factor levels with the `table()` function. Renamed the column name "pl2" to "Business Title" and created an interactive data table showing the frequency. 
+```{r}
+plot2 <- as.data.frame(da[,5])
+
+plot2$`Business Title` <- toupper(plot2$`Business Title`)
+
+pl2 <- as.data.frame(table(plot2))
+
+colnames(pl2)[1] <- "Business Title"
+
+reactable(pl2)
+```
+
+
+```{r}
+summary(pl2) # calculates some statistics on the data
+```
+
+Filter Business Titles with a frequency greater or equal to 10.  
+```{r}
+pl_2 <- filter(pl2, Freq >= 10) 
+
+pl_2
+```
+
+### Visualization 
+```{r}
+p2 <- ggplot(pl_2) 
+  p2 + geom_col(aes(`Business Title`, Freq)) +
+    coord_flip()
+```
+
+## Conclusion
+Kagle data - Data Analysis Jobs, Based on NYC Jobs was loaded and analyzed using R base functions and packages from Tidyverse and Reactable. These are the Tidyverse packages that were utilized to load `(readr)` , perform data manipulation `(dplyr)` , create graphic representation of input data `(ggplot2)`.
+
+
+
+Links
+[GitHub](https://rpubs.com/blesned/vignette)
+
+
+
+# TidyverseExtend
+
+
+<br><br>
+In the Extend chapter, we will take a look at the *Preferred Skills* field which is a free format english description
+of the requirements. We are going to do some lexicon analysis on this field.
+<br><br>
+
+Note there are some non ascii characters in it.
+
+```{r}
+
+da[1,]$`Preferred Skills`
+```
+
+<br><br>
+
+## stringr::str_replace_all()
+
+
+<br><br>
+To get rid of these we can use the *str_replace_all()* command to replace anything thats not between the hexadecimal codes that encompasses all
+ascii characters. Note *str_replace_all()* is the equivalent of the the base R *gsub()* function.
+<br><br>
+
+```{r}
+
+
+da$`Preferred Skills`<-str_replace_all(da$`Preferred Skills`,"[^\x20-\x7E]", "")
+
+```
+
+<br><br>
+Note the non-ascci characters are removed.
+<br><br>
+```{r}
+da[1,]$`Preferred Skills`
+```
+<br><br>
+
+
+## tidyr::drop_na()
+
+<br><br>
+Use *drop_na()* to eliminate any null values.
+<br><br>
+```{r}
+
+pref_skills_df<-da[c("Job ID","Preferred Skills")]
+
+
+names(pref_skills_df)<-c("jobid", "skills" )     # set col names
+
+# drop the NA skills
+pref_skills_df <- pref_skills_df %>%
+    drop_na(skills)               
+
+
+
+```
+<br><br>
+
+
+## tidytext::unnest_tokens()
+
+
+<br><br>
+Now we can use *unnest_tokens()* to seperate every word into a seperate row.
+The first parameter "word" is the token parameter, so you could specify token=word.
+Other tokens include sentence, line, and character.
+<br><br>
+```{r}
+
+pref_skills_df2 <- pref_skills_df %>%
+  unnest_tokens(word, skills )
+
+```
+
+<br><br>
+
+## dplyr :: group_by() and summarize()
+
+
+<br><br>
+These are 2 very useful functions that often go together.
+Here we get the count of every word in the job requirements.
+<br><br>
+
+```{r}
+
+pref_skills_df3 <- pref_skills_df2 %>%
+  group_by(word) %>%
+  summarize(n = n())
+
+```
+<br><br>
+
+## dplyr :: arrange()
+
+
+<br><br>
+Use *arrange()* to sort by the count, descending, so we can see the most used words.
+Note *arange()* is the equivalent to the base R *order()*
+<br><br>
+```{r}
+
+ pref_skills_df3 %>%
+      arrange(desc(n)) %>%
+        head()
+  
+```
+<br><br>
+
+
+## dplyr::filter()
+
+<br><br>
+We are only interested in skills so lets create a corpus of skills and use the *filter()* function to isolate them.
+<br><br>
+```{r}
+
+  
+
+skill_words<-c("management","communication","written","microsoft","excel","analysis","business","sql","interpersonal","software","research","powerpoint","database","quantitative","java","databases","statistical","leadership","communications","javascript","oracle","agile","visio","tableau","law","xml","manager","html5","spanish","economics","github","osha","qa")
+
+
+pref_skills_df4<-pref_skills_df3 %>%
+    filter(word %in% skill_words) %>%
+    arrange(desc(n))
+
+```
+<br><br>
+## dplyr::inner_join()
+<br><br>
+Now use *inner_join()* to merge the words back to the job ids. Note *inner_join()* is
+the equivalent of the base R *merge()* function.
+<br><br>
+```{r}
+
+pref_skills_df5= pref_skills_df2 %>% inner_join(pref_skills_df4,by="word")
+
+```
+
+<br><br>
+
+## reactable
+
+<br><br>
+
+Lastly, the reactable package is a pretty neat alternative to knitr and kable.
+<br><br>
+You can set up a filter, for example type "business" under word.
+<br><br>
+```{r}
+reactable(pref_skills_df5, filterable = TRUE, minRows = 10)
+```
+<br><br>
+You can display in groups
+<br><br>
+```{r}
+reactable(pref_skills_df5, groupBy = "word")
+
+```
+
+
+See [here](https://glin.github.io/reactable/articles/examples.html) for a great tutorial on reactable.
