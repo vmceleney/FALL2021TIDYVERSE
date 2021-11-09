@@ -1,3 +1,4 @@
+=======
 # Sample
 Initial Description and Link: 
 * Demonstrate how to flip ggplot axes
@@ -220,7 +221,8 @@ Revision/Addition Description and Link:
 
 # Nicholas O
 Initial Description and Link:
-
+* Demonstrate how to use purrr to manipulate a data frame
+* https://github.com/acatlin/FALL2021TIDYVERSE/blob/main/nick_oliver_purrr.rmd
 
 Revision/Addition Description and Link:
 
@@ -328,5 +330,4 @@ Initial Description and Link:
 
 
 Revision/Addition Description and Link:
-
 
