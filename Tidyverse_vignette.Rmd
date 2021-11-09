@@ -1,0 +1,129 @@
+---
+title: "DATA607_w9 - Tidyverse Vignette"
+author: "David Simbandumwe"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{DATA607_w9 - Tidyverse Vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Overview
+The Tidyverse provides packages that simplify repeatable data science tasks. The goal is to facilitate the conversation between humans and a computer about data. The Tidyverse packages all have a same high level philosophy, low-level grammar, and data structures, so that learning one package makes it easier to learn the next.
+
+For this vignette we will focus on the googledrive package
+
+
+
+
+# Installation
+install.packages("tidyverse")
+install.packages("googledrive")
+
+
+```{r}
+
+library(tidyverse)
+library(googledrive)
+library(curl)
+library(RCurl)
+
+
+```
+
+
+# Getting Started
+The first step in the process is authorizing Tidyverse access to your google drive
+```{r}
+drive_auth(email = "david.simbandumwe19@gmail.com")
+
+```
+
+
+# More Resources
+[Google Drive Docs](https://googledrive.tidyverse.org) 
+[R Docs](About this file Edit https://www.rdocumentation.org/packages/googledrive/versions/2.0.0)
+
+
+# Data
+From the New York Times GITHUB source:
+[CSV US counties](About this file Edit https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv)
+"The New York Times is releasing a series of data files with cumulative counts of coronavirus cases in the United States, at the state and county level, over time. We are compiling this time series data from state and local governments and health departments in an attempt to provide a complete record of the ongoing outbreak.
+
+## Read Files
+```{r}
+
+# load data from github
+covid_df = read_csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv");
+head(covid_df)
+
+covid_df <- covid_df %>% 
+  group_by(state) %>%
+  mutate (
+    sum_deaths = sum(deaths),
+    sum_cases = sum(cases),
+    n = n()
+  ) %>% 
+  select (state,sum_deaths,sum_cases,n) %>%
+  distinct() %>%
+  na.omit
+
+```
+
+```{r}
+# write data to local file system
+write.csv(covid_df,"/Users/dsimbandumwe/dev/cuny/FALL2021TIDYVERSE/output/covid.csv")
+
+```
+
+
+
+
+
+## Introduction to googledrive
+
+Goal is to allow Drive access that feels similar to Unix file system utilities so there is a full list of functions that can be performed on your google drive. 
+
+
+## working with directories
+Search your google drive for (name, type)
+
+```{r}
+drive_find(type = "folder")
+```
+
+Create a directory remotely
+```{r}
+drive_mkdir(name = "tmp_dir")
+```
+
+## working with files
+Upload a local file to you google drive 
+```{r}
+drive_upload("/Users/dsimbandumwe/dev/cuny/FALL2021TIDYVERSE/output/covid.csv", path="tmp_dir/covid.csv")
+```
+
+
+View files in a specific folder
+```{r}
+drive_ls(path = "tmp_dir")
+```
+
+## clean up
+Remove a directory
+```{r}
+drive_rm("tmp_dir")
+```
+
+
+
+
+
