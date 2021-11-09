@@ -250,7 +250,9 @@ Revision/Addition Description and Link:
 
 # Mark S
 Initial Description and Link:
-
+* Practice examples of column mean/sd and also rowwise means with mutate to create new mean columns. 
+* Step by step walk through of ggplot scatter plot (x,y, color layers), tittles and with x and y axis limits.  Example walkthrough of creating a box plot.
+* https://github.com/schmalmr/607_Fall_2021_Tidyvinette_Schmalfeld
 
 Revision/Addition Description and Link:
 
