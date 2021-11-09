@@ -1,0 +1,145 @@
+---
+title: "TidyVerse Create Vignette"
+output:
+  html_document:
+    theme: cerulean
+    toc: true
+    toc_float: true
+---
+
+### Title: CUNY SPS MDS DATA607_Tyderverse Create"
+### Author: Charles Ugiagbe
+### Date: "10/23/2021"
+
+
+```{r global_options, include=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<style>
+div.aquamarine { background-color:#d9eff9; border-radius: 10px; padding: 5px;}
+</style>
+<div class = "aquamarine">
+
+
+## Introduction
+
+Tidyverse is just a collection of R packages underlying same design philosophy, grammar, and data structure. There are currently 8 packages in the `tidyverse` package bundle including:
+
+  * `dplyr`: a set of tools for efficiently manipulating datasets;
+  * `forcats`: a package for manipulating categorical variables / factors;
+  * `ggplots2`: a classic package for data visualization;
+  * `purrr`: another set of tools for manipulating datasets, specially vecters, a complement to `dplyr`;
+  * `readr`: a set of faster and more user friendly functions to read data than R default functions;
+  * `stringr`: a package for common string operations;
+  * `tibble`：a package for reimagining data.frames in a modern way;
+  * `tidyr`: a package for reshaping data, a complement to `dplyr`.
+
+</div> \hfill\break  
+  
+**In this assignment, I will use some handy functions in tidyverse package to perform some Analysis**
+
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+##       Dataset
+
+The dataset in this project is called “student performance” from https://www.kaggle.com/datasets; The dataset contains a sample of 1000 observations of 8 variables.
+
+
+I use `read.csv` function to import the csv file to R.
+
+```{r}
+url <- "https://raw.githubusercontent.com/omocharly/DATA607_PROJECTS/main/StudentsPerformance.csv"
+data <- read.csv(url, header = TRUE)
+```
+
+
+```{r}
+head(data)
+```
+
+Glimpse help us to catch sight of the data to see the data structure.
+```{r}
+glimpse(data)
+```
+
+##   dplyr::rename()
+
+rename() changes the names of individual variables using in a column with a new one
+
+
+```{r}
+data1 <- data %>% rename(race = race.ethnicity, parental_Educatn_level= parental.level.of.education, test.prep = test.preparation.course)
+head(data1)
+```
+
+##   dplyr::select()
+
+Select(): is use for selecting a range of consecutive variables or taking the complement of a set of variables
+
+```{r}
+data2 <- data1 %>%
+  select(gender, math.score, reading.score, writing.score)
+head(data2)
+```
+
+##   dplyr::filter()
+
+I use the filter() function to filter maths, writing and reading scores that are greater than 97
+
+```{r}
+data3 <- data2 %>%
+  filter(math.score == 100, writing.score > 95, reading.score > 95)
+data3
+```
+
+##    dplyr::arrange()
+
+arrange(): orders the rows of a data frame by the values of selected columns.
+
+```{r}
+data4 <- data2 %>% arrange(desc(math.score))
+head(data4)
+```
+
+##    dplyr::mutate() 
+
+mutate() adds new variables that are function of the existing ones to the table and also preserves existing ones.
+
+```{r}
+data5 <- data4 %>%
+  mutate(avg.score = (math.score + writing.score + reading.score) / 3)
+head(data5)
+```
+
+##       dplyr::case_when() 
+
+case_when: function allows you to vectorise multiple if_else() statements. It is an R equivalent of the SQL CASE WHEN statement. If no cases match
+
+```{r}
+data6 <- data5 %>% 
+  mutate(pass_fail_grade = case_when(avg.score >= 85 ~ 'Pass'
+                                     ,TRUE ~ 'Fail' )
+         )
+head(data6)
+```
+
+##    dplyr::summarize() 
+
+```{r}
+data %>% group_by(gender) %>%
+  summarize( math_score = sum (math.score)/ n())
+```
+
+##    Tidyverse::ggplot2()
+
+ggplot2 is a system for 'declaratively' creating graphics, based on "The Grammar of Graphics".
+
+```{r}
+ggplot(data = data6, aes(x = gender, y = avg.score, col = gender), col = red) + geom_boxplot() + labs(title="Distribution of Students Average score") + theme(plot.title = element_text(hjust=0.5))
+```
+
+**Other usage of Tidyverse can be found in the textbook "R for Data Science" and other online resource.**
