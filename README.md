@@ -1,4 +1,3 @@
-
 =======
 # Sample
 Initial Description and Link: 
@@ -156,9 +155,12 @@ Revision/Addition Description and Link:
 
 # Eric L
 Initial Description and Link:
-
+* Demonstrate a handful of stringr functions and show how they are practical in data preprocessing
+* https://github.com/SaneSky109/FALL2021TIDYVERSE/blob/main/ELehmphul_TidyverseCREATE_stringr.rmd
 
 Revision/Addition Description and Link:
+* Added how to modify colors and legend of stacked bar graphs to Krutika Patel's CREATE Assignment
+* https://github.com/SaneSky109/FALL2021TIDYVERSE/blob/main/EricLehmphul_Tidyverse_EXTEND.rmd
 
 
 # Erica F
@@ -418,5 +420,4 @@ Using dplyr case_when and stringr str_replace for variable derivation
 https://github.com/catfoodlover/Data607/blob/main/dplyr_case_when.rmd
 
 Revision/Addition Description and Link:
-
 
