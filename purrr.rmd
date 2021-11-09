@@ -1,0 +1,81 @@
+---
+title: 'tidyverse: using purrr to  eliminate loops'
+author: "Catherine Cho"
+date: "10/22/2021"
+output: html_document
+---
+
+Purrr functions are useful for manipulating atomic vectors, heterogenous lists (list made up of chr,dbl,int,etc), and dataframes. These functions are more efficient than running loops to do the same operations. Purrr functions are similar to those in dplyr but while dplyr focuses on dataframes, Purrr specializes in nested dataframes and vectors. These are useful skills to have especially if you are working with heavily nested data like JSON. 
+
+"Purrr is a new package that fills in the missing pieces in R’s functional programming tools: it’s designed to make your pure functions purrr. Like many of my recent packages, it works with magrittr to allow you to express complex operations by combining simple pieces in a standard way." (Hadley Wickham)
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(purrr)
+```
+
+# Map() will run a specified function on each object in a dataframe and return the results in a list. 
+## Map() is the very basic map function in Purrr but there are variants such as map_lgl(), map_int(), map_dbl(), and map_chr() which will return the specified atomic vector. 
+
+I found a dataset that contains multiple vector type values in order to demonstrate the benefits of using map() functions. The data was sourced from kaggle where this data was scraped from AUCTION EXPORT.com which contains information about clean and used vehicles for sale in the US.  
+```{r, warning=FALSE}
+
+library(readr)
+urlfile<-"https://raw.githubusercontent.com/catcho1632/DATA-607/main/USA_cars_datasets.csv"
+cars<-read_csv(url(urlfile))
+```
+
+### Here are some very basic map functions to gather some parameters of this dataset in one line of code. 
+
+#### 1a. map_chr will return the type of each column in car
+```{r}
+cars%>%map_chr(typeof)
+```
+#### 1b. map_dbl will return a list of double type vector with the mean per column. NA is returned for non dbl types.
+```{r}
+cars%>%map_dbl(mean)
+```
+#### 1c. map_lgl will return a logical argument (true/false). It can even return the results as a string. 
+```{r}
+cars%>%map_lgl(is.numeric)
+cars%>%map_chr(is.numeric)
+```
+
+### The following section will use the map() function to run a function operation in the nested objects of a dataframe with ease. 
+
+The dataset "cars" is subsetted to contain state, brand, mileage, and price. The price, mileage, and brand is nested into each state. Purrr is useful when dealing with nested data. (other examples of nested data is JSON data)
+```{r}
+cars_spec<-subset(cars,select=c(11,3,7,2))
+cars_state<-cars_spec%>%nest(data=!state)
+str(cars_state)
+
+state_summary<-cars_spec%>%
+  group_by(state)%>%
+  nest()
+```
+
+#### 2a. How many car sales were found per state? This is done using map_int()
+```{r}
+state_count<-state_summary%>%
+  mutate(n_sales=map_int(data,nrow))
+head(state_count)
+```
+
+
+#### 2b. Find the mean price per state using map_dbl.
+```{r}
+state_mean<-state_summary%>%
+  mutate(mean_price=map_dbl(data,
+                            ~.x%>%pull(price)%>%mean())
+         )
+head(state_mean)
+
+```
+
+
+
+
+
