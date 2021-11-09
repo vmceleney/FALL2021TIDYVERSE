@@ -342,7 +342,7 @@ Revision/Addition Description and Link:
 
 
 # Santiago T
-Initial Description and Link:
+Initial Description and Link: PURRR Map and Reduce Examples https://github.com/sserrot/FALL2021TIDYVERSE
 
 
 Revision/Addition Description and Link:
@@ -428,5 +428,4 @@ Revision/Addition Description and Link:
 
 Using dplyr case_when and stringr str_replace for variable derivation
 https://github.com/catfoodlover/Data607/blob/main/dplyr_case_when.rmd
-
 
