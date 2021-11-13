@@ -95,12 +95,14 @@ Initial Description and Link:
 
 =======
 Initial Description and Link: Using dplyr's glimpse, select, filter, and rename functions. Also, create a scatterplot and barchart with ggplot2.
-[Github](https://github.com/chinedu2301/FALL2021TIDYVERSE/blob/main/Chinedu_CUNY_SPS_DATA607_create_vignette.Rmd) 
-[Rpubs](https://rpubs.com/chinedu2301/826036) 
+<li>[Github](https://github.com/chinedu2301/FALL2021TIDYVERSE/blob/main/Chinedu_CUNY_SPS_DATA607_create_vignette.Rmd)</li> 
+<li>[Rpubs](https://rpubs.com/chinedu2301/826036) </li>
 
 
-Revision/Addition Description and Link:
-
+Revision/Addition Description and Link: Tidyverse extend. Original by [Coffy](https://github.com/candrewxs/Vignettes/blob/master/dadata/KaggleTidyverse.Rmd
+)
+<li>[Github](https://github.com/chinedu2301/FALL2021TIDYVERSE/blob/main/Chinedu_CUNY_SPS_DATA607_extend_vignette2.Rmd)</li>
+<li>[Rpub](https://rpubs.com/chinedu2301/833708)</li>
 
 # ChunJie N
 Initial Description and Link:
