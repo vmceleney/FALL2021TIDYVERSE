@@ -95,7 +95,7 @@ Initial Description and Link:
 
 =======
 Initial Description and Link: Using dplyr's glimpse, select, filter, and rename functions. Also, create a scatterplot and barchart with ggplot2.
-<li>[Github](https://github.com/chinedu2301/FALL2021TIDYVERSE/blob/main/Chinedu_CUNY_SPS_DATA607_create_vignette.Rmd)</li> 
+<li><a href = "https://github.com/chinedu2301/FALL2021TIDYVERSE/blob/main/Chinedu_CUNY_SPS_DATA607_create_vignette.Rmd"> Github </a> </li> 
 <li>[Rpubs](https://rpubs.com/chinedu2301/826036) </li>
 <br>
 
