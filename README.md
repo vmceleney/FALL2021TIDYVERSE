@@ -387,6 +387,6 @@ https://github.com/catfoodlover/Data607/blob/main/dplyr_case_when.rmd
 
 Revision/Addition Description and Link:
 
-Added some more Kable options for highlighting columns and rows (Cliff Lee)
+Added some more Kable options for highlighting columns and rows (https://github.com/cliftonleesps/FALL2021TIDYVERSE)
 
 
