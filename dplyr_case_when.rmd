@@ -130,4 +130,87 @@ Say we want to make 'nut' more descriptive.  We can use str_replace() to change 
 temp2 <- temp %>% mutate(choco_composite_update = str_replace(choco_composite, "nut", "almond_peanut"))
 
 temp2 %>% count(choco_composite, choco_composite_update) %>% kbl() %>% kable_styling()
+
+temp2$choco_composite_update
+
+temp2 %>% 
+  count(choco_composite, choco_composite_update) %>% 
+  kbl() %>% 
+  kable_styling() 
+
+
+
+temp2 %>% 
+  count(choco_composite, choco_composite_update) %>% 
+  kbl() %>% 
+  kable_styling() 
 ```
+
+
+## Other Formatting Tricks with Kable
+
+
+**Applying a 'striping' theme to alternating rows**
+
+```{r, warning=FALSE, message=FALSE}
+# Make a copy for demonstration purposes
+temp3 <- temp2
+
+temp3 %>%
+  head(10) %>%
+  select(names, win_percent, choco ) %>%
+  kbl() %>%
+  kable_material(c("striped", "hover")) 
+```
+
+**Column Specifications**
+
+You can specify a specification based on a continuous variable. For example, we'll define a color specification base on each win_percent cell's value. We can also specify a web graphic as well. 
+```{r, warning=FALSE, message=FALSE}
+temp3 %>%
+  head(10) %>%
+  select(names, win_percent, choco ) %>%
+  kbl() %>%
+  kable_material(c("striped", "hover")) %>%
+  column_spec(1, width = "1em") %>%
+  column_spec(2, color = spec_color(temp3$win_percent), image ="https://icons.iconarchive.com/icons/icons8/christmas-flat-color/24/candy-icon.png", 20,20) 
+  
+
+```
+
+
+**Coloring Cell Backgrounds**
+
+Aside from the text color, we can specify a cell's background color as well. Below, we apply a conditional check to determine the background color.
+
+```{r, warning=FALSE, message=FALSE}
+
+temp3 %>%
+  head(10) %>%
+  select(names, win_percent, choco ) %>%
+  kbl() %>%
+  kable_material(c("striped", "hover")) %>%
+  column_spec(2, color = spec_color(temp3$win_percent), image ="https://icons.iconarchive.com/icons/icons8/christmas-flat-color/24/candy-icon.png", 20,20) %>% 
+  column_spec(3, color = "white",
+              background = spec_color(temp3$choco, end = 0.7)) 
+```
+
+
+**Row Based Specifications **
+
+If we want to highlight rows, that's possible with the row_spec function. Below, we only highlight rows 3 through 5 and highlight in red. The extra_css parameter allows for ad-hoc CSS in-line attributes as well.
+
+```{r, warning=FALSE, message=FALSE}
+temp3 %>%
+  head(10) %>%
+  select(names, win_percent, choco ) %>%
+  kbl() %>%
+  kable_material(c("striped", "hover")) %>%
+  column_spec(2, color = spec_color(temp3$win_percent), image ="https://icons.iconarchive.com/icons/icons8/christmas-flat-color/24/candy-icon.png", 20,20) %>% 
+  column_spec(3, color = "white",
+              background = spec_color(temp3$choco, end = 0.7)) %>%
+  row_spec(3:5, bold = T, color = "white", background = "#D7261E", extra_css="opacity:0.75")
+
+```
+
+
