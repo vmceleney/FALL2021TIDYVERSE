@@ -349,8 +349,12 @@ Revision/Addition Description and Link:
 # Shane H
 Initial Description and Link:
 
+TidyVerse Exploration with fivethirtyeight NFL Elo Data
+https://rpubs.com/st3vejobs/835921
+https://github.com/st3vejobs/tidyverse-CREATE
 
 Revision/Addition Description and Link:
+
 
 
 # Shari M
