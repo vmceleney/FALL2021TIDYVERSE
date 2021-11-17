@@ -213,9 +213,9 @@ ggplot(zip10, aes(x=idx, y = injuries, color = ZIP.CODE))+
   xlab('ZIP Code')+
   geom_text(
     label=zip10$ZIP.CODE, 
-    nudge_x = 0, nudge_y = 6, 
+    nudge_x = 0, nudge_y = 10, 
     check_overlap = T,
-    size = 8
+    size = 5
   )+
   ylab('Injuries')
 
