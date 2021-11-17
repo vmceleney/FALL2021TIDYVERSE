@@ -357,7 +357,11 @@ https://github.com/st3vejobs/tidyverse-CREATE
 
 Revision/Addition Description and Link:
 
+Extended Tom Buonora's Tidyverse vignette to show a deeper dive into ggplot2 and introduced a few additional functions. 
 
+https://rpubs.com/st3vejobs/836459
+
+https://github.com/st3vejobs/tidyverse-CREATE
 
 # Shari M
 Initial Description and Link:
