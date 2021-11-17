@@ -79,7 +79,8 @@ https://rpubs.com/omocharly/826053
 
 
 Revision/Addition Description and Link:
-
+https://github.com/omocharly/DATA607_PROJECTS/blob/main/DATA607_Tidyverse%20Extend.Rmd
+https://rpubs.com/omocharly/834683
 
 # Chase P
 Initial Description and Link:
