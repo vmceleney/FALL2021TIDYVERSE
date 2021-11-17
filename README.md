@@ -446,3 +446,6 @@ Using dplyr case_when and stringr str_replace for variable derivation
 https://github.com/catfoodlover/Data607/blob/main/dplyr_case_when.rmd
 
 
+Added some more Kable options for highlighting columns and rows (https://github.com/cliftonleesps/FALL2021TIDYVERSE)
+
+
