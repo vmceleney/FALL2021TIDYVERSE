@@ -385,7 +385,8 @@ https://github.com/vmceleney/DATA-607/blob/main/Project-TidyVerse-Vicky-McEleney
 
 
 Revision/Addition Description and Link:
-
+Added geom_bin_2d example to Mauricio's geom_point vignette.
+https://github.com/vmceleney/DATA-607/blob/main/Project-TidyVerse%20EXTEND-Vicky-McEleney.Rmd
 
 # Wiktoria G
 Initial Description and Link:
