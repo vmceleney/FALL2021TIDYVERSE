@@ -420,12 +420,14 @@ Initial Description and Link:
 
 Demonstrate some basic Relational Data Mutating Join functions.  
 
-Revision/Addition Description and Link:
 https://github.com/vmceleney/DATA-607/blob/main/Project-TidyVerse-Vicky-McEleney.Rmd
 
 
-
 Revision/Addition Description and Link:
+
+Added geom_bin_2d example to Mauricio's geom_point vignette. 
+
+https://github.com/vmceleney/DATA-607/blob/main/Project-TidyVerse%20EXTEND-Vicky-McEleney.Rmd
 
 
 # Wiktoria G
